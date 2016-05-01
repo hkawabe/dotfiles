@@ -57,8 +57,14 @@ japanese-jisx0208:-bitstream-sirius-medium-r-normal--16-150-75-75-c-160-jisx0208
    "fontset-normal" 'japanese-jisx0208
    "-bitstream-sirius-medium-r-normal--16-150-75-75-c-160-jisx0208.1983-0")
   (modify-all-frames-parameters '((font . "fontset-normal")))))
-;; -jis-fixed-medium-r-normal--16-*-*-*-*-*-jisx0208.1983-0
-
+(when (eq system-type 'darwin)
+  (set-face-attribute 'default nil
+		      :family "Menlo"
+		      :height 120)
+  (set-fontset-font
+   nil 'japanse-jisx0208
+   (font-spec :family "Hiragino Maru Gothic Pro")))
+  
 ;;	elscreen
 (require 'elscreen)
 (setq elscreen-prefix-key "\C-t")
