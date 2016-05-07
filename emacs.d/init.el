@@ -46,6 +46,14 @@
 (require 'init-loader)
 (init-loader-load "~/.emacs.d/conf")
 
+;;
+(when (require 'dired-list-all-mode nil t)
+   (setq dired-listing-switches "-lhFG")
+   (add-hook 'dired-mode-hook
+             (lambda ()
+               (define-key dired-mode-map "a" 'dired-list-all-mode)
+               )))
+
 ;;	font-settings
 (cond
  ((fboundp 'modify-all-frames-parameters)
